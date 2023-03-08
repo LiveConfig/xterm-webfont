@@ -8,9 +8,13 @@ The current (2.1.x) version of xterm-webfont is a fork of the original [xterm-we
 
 xterm-webfont is a CommonJS module available on NPM or Yarn. Install it and import (or require) it like so:
 
+```shell
+npm install @liveconfig/xterm-webfont
+```
+
 ```js
 import { Terminal } from 'xterm'
-import * as XtermWebfont from 'xterm-webfont'
+import * as XtermWebfont from '@liveconfig/xterm-webfont'
 // alternatively, var WebfontLoader = require('xterm-webfont')
 const term = new Terminal({ fontFamily: 'Roboto Mono' })
 term.loadAddon(new XtermWebfont())
