@@ -4,7 +4,7 @@ module.exports = class XtermWebfont {
   activate(terminal) {
     this._terminal = terminal;
     terminal.loadWebfontAndOpen = function(element) {
-      const fontFamily = this.getOption("fontFamily");
+      const fontFamily = this.options.fontFamily;
       const regular = new FontFaceObserver(fontFamily).load();
       const bold = new FontFaceObserver(fontFamily, { weight: "bold" }).load();
 
@@ -14,7 +14,7 @@ module.exports = class XtermWebfont {
           return this;
         },
         () => {
-          this.setOption("fontFamily", "Courier");
+          this.options.fontFamily = "Courier";
           this.open(element);
           return this;
         }

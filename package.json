@@ -1,13 +1,20 @@
 {
-  "name": "xterm-webfont",
-  "version": "2.0.0",
+  "name": "@liveconfig/xterm-webfont",
+  "version": "2.1.0",
   "description": "xterm.js addon for ensuring webfonts load",
   "main": "dist/index.js",
-  "author": "Vincent Woo <vincent@coderpad.io>",
-  "repository": "CoderPad/xterm-webfont",
-  "homepage": "https://github.com/CoderPad/xterm-webfont",
+  "author": "Klaus Keppler <kk@liveconfig.com>",
+  "repository": "LiveConfig/xterm-webfont",
+  "homepage": "https://github.com/LiveConfig/xterm-webfont",
   "license": "ISC",
+  "scripts": {
+    "build": "babel src -d dist"
+  },
   "dependencies": {
     "fontfaceobserver": "2.*"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/preset-env": "^7.20.2"
   }
 }

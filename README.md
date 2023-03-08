@@ -2,9 +2,9 @@
 
 xterm-webfont is an [xterm.js](https://github.com/xtermjs/xterm.js) addon for ensuring that webfonts load correctly before attempting to draw characters in an xterm instance. It is only necessary when using xterm 3.0 and above. Prior to 3.0, xterm drew characters directly to the DOM. Now that xterm draws characters to a canvas element, you cannot rely on the browser to eventually load and redraw needed webfonts. xterm-webfont will attempt to delay opening the xterm instance until both the normal and bold variants of the selected font family become available. It does so using the [FontFaceObserver](https://github.com/bramstein/fontfaceobserver) library.
 
-# Usage
+The current (2.1.x) version of xterm-webfont is a fork of the original [xterm-webfont](https://github.com/CoderPad/xterm-webfont) module by Vincent Woo and only adjusted for compatibility with xterm.js 5.0 and later. For xterm.js 4.x use [xterm-webfont 2.0.0](https://github.com/CoderPad/xterm-webfont).
 
-The current (2.x) version of xterm-webfont is compatible with xterm.js 4.0 and later. Check the git history of this file for older usage.
+# Usage
 
 xterm-webfont is a CommonJS module available on NPM or Yarn. Install it and import (or require) it like so:
 

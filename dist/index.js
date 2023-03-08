@@ -1,45 +1,26 @@
 "use strict";
 
-var FontFaceObserver = require("fontfaceobserver");
-
-module.exports =
-  /*#__PURE__*/
-  (function() {
-    function XtermWebfont() {}
-
-    var _proto = XtermWebfont.prototype;
-
-    _proto.activate = function activate(terminal) {
-      this._terminal = terminal;
-
-      terminal.loadWebfontAndOpen = function(element) {
-        var _this = this;
-
-        var fontFamily = this.getOption("fontFamily");
-        var regular = new FontFaceObserver(fontFamily).load();
-        var bold = new FontFaceObserver(fontFamily, {
-          weight: "bold"
-        }).load();
-        return regular.constructor.all([regular, bold]).then(
-          function() {
-            _this.open(element);
-
-            return _this;
-          },
-          function() {
-            _this.setOption("fontFamily", "Courier");
-
-            _this.open(element);
-
-            return _this;
-          }
-        );
-      };
+const FontFaceObserver = require("fontfaceobserver");
+module.exports = class XtermWebfont {
+  activate(terminal) {
+    this._terminal = terminal;
+    terminal.loadWebfontAndOpen = function (element) {
+      const fontFamily = this.options.fontFamily;
+      const regular = new FontFaceObserver(fontFamily).load();
+      const bold = new FontFaceObserver(fontFamily, {
+        weight: "bold"
+      }).load();
+      return regular.constructor.all([regular, bold]).then(() => {
+        this.open(element);
+        return this;
+      }, () => {
+        this.options.fontFamily = "Courier";
+        this.open(element);
+        return this;
+      });
     };
-
-    _proto.dispose = function dispose() {
-      delete this._terminal.loadWebfontAndOpen;
-    };
-
-    return XtermWebfont;
-  })();
+  }
+  dispose() {
+    delete this._terminal.loadWebfontAndOpen;
+  }
+};
